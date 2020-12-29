@@ -5,11 +5,11 @@ export interface IApiResult {
 
 interface NewsItem {
   id: string,
-  title: string
+  href: string
 }
 /**
  * @description Api-Service abstractions
  */
 export interface IApiService {
-  index (): Promise<IApiResult>
+  index(): Promise<IApiResult>
 }

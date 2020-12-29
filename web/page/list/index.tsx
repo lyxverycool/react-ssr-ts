@@ -5,8 +5,8 @@ interface Props {
   news: NewsItem[]
 }
 interface NewsItem {
-  id: string,
-  title: string
+  _id: string,
+  href: string
 }
 
 const List: SFC<Props> = (props: Props): JSX.Element => {
@@ -15,10 +15,10 @@ const List: SFC<Props> = (props: Props): JSX.Element => {
       <div className='welcome' />
       <ul className='list'>
         {
-          props.news && props.news.map((item: NewsItem) => (
-            <li key={item.id}>
-              <div>list标题: {item.title}</div>
-              <div className='toDetail'><a href={`/news/${item.id}`}>点击查看详情</a></div>
+          props.news && props.news.map((item: NewsItem, index: number) => (
+            <li key={index}>
+              <div>list标题: {item.href}</div>
+              <div className='toDetail'><a href={`/news/${item._id}`}>点击查看详情</a></div>
             </li>
           ))
         }

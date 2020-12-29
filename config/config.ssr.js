@@ -1,7 +1,8 @@
 const resolvePath = (path) => require('path').resolve(__dirname, path)
+const loadable = require('react-loadable')
 
 module.exports = {
-  type: 'ssr', // 指定运行类型可设置为csr切换为客户端渲染
+  type: 'csr', // 指定运行类型可设置为csr切换为客户端渲染
   routes: [
     {
       path: '/',
@@ -13,7 +14,7 @@ module.exports = {
     {
       path: '/list',
       exact: true,
-      Component: () => (__isBrowser__ ? require('react-loadable')({
+      Component: () => (__isBrowser__ ? loadable({
         loader: () => import(/* webpackChunkName: "list" */ '@/page/list'),
         loading: function Loading() {
           return React.createElement('div')
@@ -26,7 +27,7 @@ module.exports = {
     {
       path: '/news/:id',
       exact: true,
-      Component: () => (__isBrowser__ ? require('react-loadable')({
+      Component: () => (__isBrowser__ ? loadable({
         loader: () => import(/* webpackChunkName: "news" */ '@/page/news'),
         loading: function Loading() {
           return React.createElement('div')

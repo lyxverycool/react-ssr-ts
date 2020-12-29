@@ -2,7 +2,18 @@
   "name": "ssr-with-ts",
   "version": "2.3.16",
   "description": "ykfe",
+  "scripts": {
+    "prod": "npm run build && cross-env NODE_ENV=production egg-scripts start --title=egg-server-ssr-with-ts --framework=midway --ts",
+    "start": "concurrently \"npm run ssr\" \"npm run csr\"",
+    "start:prod": "cross-env NODE_ENV=production egg-scripts start --title=egg-server-ssr-with-ts --framework=midway --ts",
+    "ssr": "concurrently \"cross-env NODE_ENV=development midway-bin dev --ts\" \"cross-env NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
+    "csr": "cross-env NODE_ENV=development ykcli dev",
+    "build": "midway-bin build -c && npm run build:ssr && npm run build:csr",
+    "build:ssr": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.server.js",
+    "build:csr": "cross-env NODE_ENV=production ykcli build"
+  },
   "dependencies": {
+    "axios": "^0.21.1",
     "egg-scripts": "^2.13.0",
     "midway": "^1.0.0",
     "react": "^16.10.2",
@@ -56,16 +67,6 @@
   },
   "engines": {
     "node": ">=10.16.0"
-  },
-  "scripts": {
-    "prod": "npm run build && NODE_ENV=production egg-scripts start --title=egg-server-ssr-with-ts --framework=midway --ts",
-    "start": "concurrently \"npm run ssr\" \"npm run csr\"",
-    "start:prod": "NODE_ENV=production egg-scripts start --title=egg-server-ssr-with-ts --framework=midway --ts",
-    "ssr": "concurrently \"cross-env NODE_ENV=development midway-bin dev --ts\" \"cross-env NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
-    "csr": "cross-env NODE_ENV=development ykcli dev",
-    "build": "midway-bin build -c && npm run build:ssr && npm run build:csr",
-    "build:ssr": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.server.js",
-    "build:csr": "cross-env NODE_ENV=production ykcli build"
   },
   "midway-bin-clean": [
     ".vscode/.tsbuildinfo",
