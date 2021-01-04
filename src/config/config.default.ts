@@ -1,9 +1,12 @@
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'midway'
+
 const path = require('path')
 export type DefaultConfig = PowerPartial<EggAppConfig>
+
 interface MyEggAppInfo extends EggAppInfo {
   appDir?: string
 }
+
 export default (appInfo: MyEggAppInfo) => {
   const config = {} as DefaultConfig
 
@@ -12,8 +15,10 @@ export default (appInfo: MyEggAppInfo) => {
 
   // add your config here
   config.middleware = [
-
+    'corsMiddleware',
+    'sendMiddleware'
   ]
+
   config.static = {
     dir: [path.join(appInfo.appDir, '/output'), path.join(appInfo.appDir, '/src/app/public')],
     prefix: '/'

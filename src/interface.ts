@@ -1,6 +1,6 @@
 
 export interface IApiResult {
-  news: NewsItem[]
+  data: NewsItem[]
 }
 
 interface NewsItem {

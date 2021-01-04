@@ -96,6 +96,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   resolve: {
     alias: {
+      "~": paths.serveSrc,
       '@': paths.appSrc
     },
     extensions: paths.moduleFileExtensions

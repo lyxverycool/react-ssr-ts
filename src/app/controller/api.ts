@@ -4,16 +4,14 @@ import { IApiService } from '../../interface'
 @controller('/api')
 export class Api {
   @inject()
-    ctx: Context
+  ctx: Context
   @inject('ApiService')
-    service: IApiService
+  service: IApiService
   @get('/getIndexData')
-    async index () {
+  async index() {
     try {
-            // Page为webpack打包的chunkName，项目默认的entry为Page
-      this.ctx.type = 'text/json'
-      this.ctx.status = 200
-      this.ctx.body = await this.service.index()
+      const data = await this.service.index()
+      this.ctx.send(data.data)
     } catch (error) {
       this.ctx.logger.error(`Page Controller renderToStream Error`, error)
     }

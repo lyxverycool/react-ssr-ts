@@ -21,7 +21,6 @@ const fetch = (request: RequestFace) => {
   return axios(options as any)
     .then(res => res.data)
     .catch(err => {
-      console.warn(11)
       return err
     })
 }

@@ -35,8 +35,6 @@ export class ApiService implements IApiService {
     if (res && res.data) {
       data = res.data
     }
-    return {
-      news: data
-    }
+    return { data }
   }
 }

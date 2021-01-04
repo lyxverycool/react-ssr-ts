@@ -35,6 +35,7 @@ module.exports = {
   appPublic: resolveApp('app/public'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('web'),
+  serveSrc: resolveApp('src'),
   entry: resolveApp('web/entry'),
   layout: resolveApp('web/layout'),
   appNodeModules: resolveApp('node_modules'),
