@@ -1,7 +1,7 @@
 {
   "name": "ssr-with-ts",
-  "version": "2.3.16",
-  "description": "ykfe",
+  "version": "0.0.1",
+  "description": "ssr-egg",
   "scripts": {
     "prod": "npm run build && cross-env NODE_ENV=production egg-scripts start --title=egg-server-ssr-with-ts --framework=midway --ts",
     "start": "concurrently \"npm run ssr\" \"npm run csr\"",
@@ -76,6 +76,6 @@
     "type": "git",
     "url": ""
   },
-  "author": "ykfe",
+  "author": "egg",
   "license": "MIT"
 }
